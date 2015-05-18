@@ -13,6 +13,8 @@
 
 use App\User as User;
 
+use App\Models\Profile as Profile;
+
 Route::get('/', function()
 {
     $data = array();
