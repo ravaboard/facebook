@@ -33,7 +33,6 @@ Route::get('login/fb', function() {
         'scope' => 'email',
     );
 	
-	dd($params);
     return Redirect::to($facebook->getLoginUrl($params));
 });
 
