@@ -1,6 +1,8 @@
 <?php namespace App\Models;
 
-class Profile extends Eloquent {
+use Illuminate\Database\Eloquent\Model;
+
+class Profile extends Model {
 
 	public function user()
     {
