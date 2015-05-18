@@ -18,6 +18,7 @@ use App\Models\Profile as Profile;
 Route::get('/', function()
 {
     $data = array();
+	
     if (Auth::check()) {
         $data = Auth::user();
     }
@@ -31,6 +32,8 @@ Route::get('login/fb', function() {
         'redirect_uri' => url('/login/fb/callback'),
         'scope' => 'email',
     );
+	
+	dd($params);
     return Redirect::to($facebook->getLoginUrl($params));
 });
 
@@ -44,8 +47,9 @@ Route::get('login/fb/callback', function() {
     if ($uid == 0) return Redirect::to('/')->with('message', 'There was an error');
      
     $me = $facebook->api('/me');
-
+    dd($me);
 	$profile = Profile::whereUid($uid)->first();
+	
     if (empty($profile)) {
 
     	$user = new User;
